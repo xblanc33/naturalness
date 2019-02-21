@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
-const Ngram = require('../Ngram.js').Ngram;
-const Event = require('../Event.js').Event;
+const Ngram = require('../Ngram.js');
+const Event = require('../Event.js');
 
 describe('Ngram', function() {
   describe('#constructor()', function() {

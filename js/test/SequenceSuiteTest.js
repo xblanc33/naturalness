@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
-const Event = require('../Event.js').Event;
-const Sequence = require('../Sequence.js').Sequence;
-const SequenceSuite = require('../SequenceSuite.js').SequenceSuite;
+const Event = require('../Event.js');
+const Sequence = require('../Sequence.js');
+const SequenceSuite = require('../SequenceSuite.js');
 
 const DEPTH = 2;
 const PROBA_OF_UNKNOWN = 0.000001;

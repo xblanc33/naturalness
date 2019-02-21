@@ -1,6 +1,6 @@
-const Sequence = require('./Sequence.js').Sequence;
-const NgramSuccessorModel = require('./NgramSuccessorModel.js').NgramSuccessorModel
-const Ngram = require('./Ngram.js').Ngram;
+const Sequence = require('./Sequence.js');
+const NgramSuccessorModel = require('./NgramSuccessorModel.js');
+const Ngram = require('./Ngram.js');
 
 const PROBA_OF_UNKNOWN = 0; //0.000001;
 const DEPTH = 3;
@@ -72,4 +72,4 @@ function checkNgramType(ngram) {
         throw 'ngram is not a Ngram';
     }
 }
-module.exports.NaturalnessModel = NaturalnessModel;
+module.exports = NaturalnessModel;

@@ -1,5 +1,5 @@
-const Ngram = require('./Ngram.js').Ngram;
-const Event = require('./Event.js').Event;
+const Ngram = require('./Ngram.js');
+const Event = require('./Event.js');
 
 class Sequence {
     constructor(eventList, name) {
@@ -44,4 +44,4 @@ class Sequence {
     }
 }
 
-module.exports.Sequence = Sequence;
+module.exports = Sequence;

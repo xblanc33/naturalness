@@ -1,5 +1,5 @@
-const Sequence = require('./Sequence.js').Sequence;
-const NaturalnessModel = require('./NaturalnessModel.js').NaturalnessModel;
+const Sequence = require('./Sequence.js');
+const NaturalnessModel = require('./NaturalnessModel.js');
 
 const DEPTH = 4;
 const PROBA_OF_UNKNOWN = 0;//0.000001;
@@ -67,4 +67,4 @@ class SequenceSuite {
     }
 }
 
-module.exports.SequenceSuite = SequenceSuite;
+module.exports = SequenceSuite;

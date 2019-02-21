@@ -20,4 +20,4 @@ function hashCode(s) {
     return hash;
 }
 
-module.exports.Event = Event;
+module.exports = Event;

@@ -1,4 +1,4 @@
-const Event = require('./Event.js').Event;
+const Event = require('./Event.js');
 
 class NgramSuccessorModel {
     constructor() {
@@ -44,4 +44,4 @@ function checkType(event) {
     }
 }
 
-module.exports.NgramSuccessorModel = NgramSuccessorModel;
+module.exports = NgramSuccessorModel;

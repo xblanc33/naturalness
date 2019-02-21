@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
-const Event = require('../Event.js').Event;
-const NgramSuccessorModel = require('../NgramSuccessorModel.js').NgramSuccessorModel;
+const Event = require('../Event.js');
+const NgramSuccessorModel = require('../NgramSuccessorModel.js');
 
 describe('NgramSuccessorMoel', function() {
   describe('#constructor()', function() {

@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const Event = require('../Event.js').Event;
+const Event = require('../Event.js');
 
 describe('Event', function() {
   describe('#constructor()', function() {

@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
-const Sequence = require('../Sequence.js').Sequence;
-const Event = require('../Event.js').Event;
+const Sequence = require('../Sequence.js');
+const Event = require('../Event.js');
 
 describe('Sequence', function() {
   describe('#constructor()', function() {

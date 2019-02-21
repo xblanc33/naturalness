@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
-const NaturalnessModel = require('../NaturalnessModel.js').NaturalnessModel;
-const Event = require('../Event.js').Event;
-const Sequence = require('../Sequence.js').Sequence;
+const NaturalnessModel = require('../NaturalnessModel.js');
+const Event = require('../Event.js');
+const Sequence = require('../Sequence.js');
 
 describe('NaturalnessModel', function () {
     describe('#learn()', () => {
