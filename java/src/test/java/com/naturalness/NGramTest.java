@@ -40,7 +40,7 @@ public class NGramTest {
     }
 
     @Test
-    public void shouldCreateSameHash() {
+    public void shouldCreateSameNGram() {
         List<Event> eventList = new ArrayList<Event>();
         NGram ng1 = new NGram(eventList);
         NGram ng2 = new NGram(eventList);
