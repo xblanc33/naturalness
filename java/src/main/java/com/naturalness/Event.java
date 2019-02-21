@@ -25,6 +25,9 @@ public class Event {
     private String value;
 
     public Event(String value) {
+        if (value == null) {
+            throw new IllegalArgumentException("value cannot be null");
+        }
         this.value = value;
     }
 

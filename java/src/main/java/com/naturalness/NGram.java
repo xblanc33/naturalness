@@ -27,6 +27,9 @@ public class NGram {
     private List<Event> eventList;
 
     public NGram(List<Event> eventList) {
+        if (eventList == null) {
+            throw new IllegalArgumentException("cannot create NGram with null");
+        }
         this.eventList = new ArrayList<Event>(eventList);
     }
 
