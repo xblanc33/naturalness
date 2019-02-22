@@ -56,11 +56,9 @@ public class NaturalnessModelTest {
         NaturalnessModel model = new NaturalnessModel();
         model.learn(sequenceList.get(0));
         double ce = model.crossEntropy(sequenceList.get(1));
-        System.out.println(ce);
         double right = 1 - model.getProbaOfUnknown();
         double wrong = model.getProbaOfUnknown();
         double expected = -(4*Math.log(right)/Math.log(2) + Math.log(wrong)/Math.log(2)) / 5;
-        System.out.println(expected);
         assertTrue(ce == expected);
     }
 

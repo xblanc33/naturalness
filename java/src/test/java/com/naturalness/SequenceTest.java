@@ -2,7 +2,7 @@ package com.naturalness;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,24 @@ public class SequenceTest {
         assertTrue(seq.getEventList().size() == 1);
         seq.getEventList().clear();
         assertTrue(seq.getEventList().size() == 1);
+    }
+
+    @Test
+    public void shouldCompareSequence() {
+        List<Event> eventList1 = new ArrayList<Event>();
+        eventList1.add(new Event("hey"));
+        eventList1.add(new Event("ho"));
+        eventList1.add(new Event("hu"));
+        List<Event> eventList2 = new ArrayList<Event>();
+        eventList2.add(new Event("hey"));
+        eventList2.add(new Event("ho"));
+        eventList2.add(new Event("hu"));
+        assertEquals(eventList1, eventList2);
+        List<Event> eventList3 = new ArrayList<Event>();
+        eventList3.add(new Event("hey"));
+        eventList3.add(new Event("hu"));
+        eventList3.add(new Event("ho"));
+        assertNotEquals(eventList1, eventList3);
     }
 
     @Test
