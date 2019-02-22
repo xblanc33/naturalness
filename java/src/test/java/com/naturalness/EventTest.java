@@ -6,11 +6,9 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-public class EventTest 
-{
+public class EventTest {
     @Test
-    public void shouldThrowAnExceptionWithNull()
-    {
+    public void shouldThrowAnExceptionWithNull() {
         try {
             Event e = new Event(null);
             fail("No exception");
@@ -21,18 +19,17 @@ public class EventTest
     }
 
     @Test
-    public void shouldCreateSameHash()
-    {
+    public void shouldCreateSameHash() {
         Event e1 = new Event("");
         Event e2 = new Event("");
         assertEquals(e1.hashCode(), e2.hashCode());
     }
 
     @Test
-    public void shouldCreateDifferentHash()
-    {
+    public void shouldCreateDifferentHash() {
         Event e1 = new Event("hey");
         Event e2 = new Event("hey!");
         assertTrue(e1.hashCode() != e2.hashCode());
     }
+
 }
