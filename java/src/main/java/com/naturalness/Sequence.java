@@ -20,6 +20,7 @@ under the License.
 package com.naturalness;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.ArrayList;
 
 public class Sequence {
@@ -51,4 +52,29 @@ public class Sequence {
     }
     return new NGram(ngramEventList);
   }
+
+  @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Sequence)) {
+            return false;
+        }
+        Sequence otherSequence = (Sequence) other;
+        if (otherSequence.eventList.size() != this.eventList.size()) {
+            return false;
+        }
+        for (int i = 0 ; i < otherSequence.eventList.size() ; i++) {
+            Event otherEvent = otherSequence.eventList.get(i);
+            Event thisEvent = this.eventList.get(i);
+            if (! otherEvent.equals(thisEvent)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        String value = this.eventList.stream().map( e -> e.getValue()).reduce("" , (accu, cur) -> accu + cur);
+        return Objects.hash(value);
+    }
 }

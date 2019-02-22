@@ -10,7 +10,7 @@ public class EventTest {
     @Test
     public void shouldThrowAnExceptionWithNull() {
         try {
-            Event e = new Event(null);
+            new Event(null);
             fail("No exception");
 
         } catch (Exception e) {

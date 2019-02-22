@@ -21,9 +21,7 @@ package com.naturalness;
 
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class NaturalnessModel {
     private final int DEPTH_DEFAULT = 3;
@@ -45,6 +43,14 @@ public class NaturalnessModel {
         this.probaOfUnknown = probaOfUnknown;
     }
 
+    public int getDepth() {
+        return depth;
+    }
+
+    public double getProbaOfUnknown() {
+        return probaOfUnknown;
+    }
+
     public double crossEntropy(Sequence sequence) {
         if (sequence == null) {
             throw new IllegalArgumentException("sequence cannot be null");
@@ -61,7 +67,7 @@ public class NaturalnessModel {
             double modelProba = getProbability(currentNgram, currentEvent);
             double proba;
             if (modelProba == 0) {
-                proba = modelProba;
+                proba = probaOfUnknown;
             } else {
                 proba = modelProba * (1 - probaOfUnknown);
             }
@@ -71,9 +77,24 @@ public class NaturalnessModel {
     }
 
     public double getProbability(NGram ngram, Event event) {
+        if (ngram == null || event == null) {
+            return 0;
+        }
         if (! ngramMap.containsKey(ngram)) {
             return 0;
         }
         return ngramMap.get(ngram).getProbability(event);
+    }
+
+    public void learn(Sequence sequence) {
+        List<Event> eventList = sequence.getEventList();
+        for (int i = 0; i < eventList.size() ; i++) {
+            NGram ngram = sequence.getNgram(i, depth);
+            if (!ngramMap.containsKey(ngram)) {
+                ngramMap.put(ngram, new NGramSuccessorModel());
+            }
+            NGramSuccessorModel ngramSuccessor = ngramMap.get(ngram);
+            ngramSuccessor.learn(eventList.get(i));   
+        }
     }
 }

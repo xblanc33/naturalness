@@ -15,7 +15,7 @@ public class NGramTest {
     @Test
     public void shouldCreateNGram() {
         try {
-            NGram ngram = new NGram(null);
+            new NGram(null);
             fail();
         } catch (Exception ex) {
 
