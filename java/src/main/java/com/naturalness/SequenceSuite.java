@@ -51,7 +51,7 @@ public class SequenceSuite {
         }
 
         double minEntropy = -Math.log(probaOfUnknown)/Math.log(2);
-        Sequence minSequence = null;
+        Sequence minSequence = sequenceList.get(0);
 
         if (sequenceList.size() == 1) {
             return new Ranking(sequenceList.get(0), minEntropy);
@@ -65,7 +65,7 @@ public class SequenceSuite {
                 model.learn(sequence);
             }
             double currentCrossEntropy = model.crossEntropy(current);
-            if (currentCrossEntropy <= minEntropy) {
+            if (currentCrossEntropy < minEntropy) {
                 minEntropy = currentCrossEntropy;
                 minSequence = current;
             }
@@ -77,7 +77,6 @@ public class SequenceSuite {
         if (sequenceList.size() == 0) {
             return new ArrayList<Ranking>();
         }
-
         List<Ranking> rankingList = new ArrayList<Ranking>();
         Ranking moreNatural = getMoreNatural();
         rankingList.add(moreNatural);
