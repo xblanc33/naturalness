@@ -24,16 +24,11 @@ import java.util.Map;
 
 public class NGramSuccessorModel {
     private final int NULL_PROBABILITY = 0;
-    private NGram ngram;
     private Map<Event, Integer> successorMap;
     private int occurence;
     
 
-    public NGramSuccessorModel(NGram ngram) {
-        if (ngram == null) {
-            throw new IllegalArgumentException("ngram cannot be null");
-        }
-        this.ngram = ngram;
+    public NGramSuccessorModel() {
         this.successorMap = new HashMap<Event, Integer>();
         this.occurence = 0;
     }
@@ -58,6 +53,7 @@ public class NGramSuccessorModel {
             int newOccurence = successorMap.get(event).intValue()+1;
             successorMap.replace(event, Integer.valueOf(newOccurence));
         }
+        occurence++;
     }
 
 }
