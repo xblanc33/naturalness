@@ -10,7 +10,7 @@ class NgramSuccessorModel {
         checkType(event);
 
         let successor = this.successorMap.get(event.key)
-        if (successor == undefined)  {
+        if (successor === undefined)  {
             return 0;
         }
         return successor.occurence / this.occurence;

@@ -33,7 +33,7 @@ class NaturalnessModel {
 
     getProbability(ngram, event) {
         let successor = this.ngramMap.get(ngram.key);
-        if (successor == undefined) {
+        if (successor === undefined) {
             return 0;
         }
         return successor.getProbability(event);
@@ -65,7 +65,7 @@ function checkSequenceType(sequence) {
 }
 
 function checkNgramType(ngram) {
-    if (ngram == null || ngram == undefined) {
+    if (ngram === undefined || ngram === null ) {
         throw 'ngram is null or undefined';
     }
     if (!(ngram instanceof Ngram)) {

@@ -2,6 +2,7 @@ const assert = require('chai').assert;
 const NaturalnessModel = require('../NaturalnessModel.js');
 const Event = require('../Event.js');
 const Sequence = require('../Sequence.js');
+const Ngram = require('../Ngram.js');
 
 describe('NaturalnessModel', function () {
     describe('#learn()', () => {
@@ -65,6 +66,59 @@ describe('NaturalnessModel', function () {
             assert.notEqual(crossEnt7, crossEnt8);
         });
     });
+    describe('#getProbability()', () => {
+        it('should give 100% probability', () => {
+            let model = new NaturalnessModel(2,0);
+            let sequenceSample = createSequence();
+            model.learn(sequenceSample.one);
+            model.learn(sequenceSample.two);
+            let ng = new Ngram([new Event('a'),new Event('b')]);
+            let proba = model.getProbability(ng, new Event('c'));
+            const HUNDRED_PERCENT=1;
+            assert.equal(proba, HUNDRED_PERCENT);
+        });
+        it('should give 0% probability', () => {
+            let model = new NaturalnessModel(2,0);
+            let sequenceSample = createSequence();
+            model.learn(sequenceSample.one);
+            model.learn(sequenceSample.two);
+            let ng = new Ngram([new Event('a'),new Event('b')]);
+            let proba = model.getProbability(ng, new Event('d'));
+            const ZERO_PERCENT=0;
+            assert.equal(proba, ZERO_PERCENT);
+        });
+        it('should give 0% probability with a unknrown Ngram', () => {
+            let model = new NaturalnessModel(2,0);
+            let sequenceSample = createSequence();
+            model.learn(sequenceSample.one);
+            model.learn(sequenceSample.two);
+            let ng = new Ngram([new Event('a'),new Event('z')]);
+            let proba = model.getProbability(ng, new Event('a'));
+            const ZERO_PERCENT=0;
+            assert.equal(proba, ZERO_PERCENT);
+        });
+        it('should give probabilities that sum to 1', () => {
+            let model = new NaturalnessModel(2,0);
+            let sequenceSample = createSequence();
+            model.learn(sequenceSample.one);
+            model.learn(sequenceSample.two);
+            let ng = new Ngram([new Event('c'),new Event('d')]);
+            let probaE = model.getProbability(ng, new Event('e'));
+            let probaC = model.getProbability(ng, new Event('c'));
+            assert.equal(probaE+probaC, 1);
+            model.learn(sequenceSample.four);
+            probaE = model.getProbability(ng, new Event('e'));
+            probaC = model.getProbability(ng, new Event('c'));
+            assert.equal(probaE+probaC, 1);
+            model.learn(sequenceSample.five);
+            probaE = model.getProbability(ng, new Event('e'));
+            probaC = model.getProbability(ng, new Event('c'));
+            let probaF = model.getProbability(ng, new Event('f'));
+            assert.equal(probaE+probaC+probaF, 1);
+            assert.equal(probaE, 0.5);
+        });
+    });
+    
 });
 
 
