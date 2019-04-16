@@ -24,7 +24,21 @@ public class NaturalnessModelTest {
         Event f = new Event("f");
         sequenceList.add(new Sequence(Arrays.asList(a, b, c, d, e)));
         sequenceList.add(new Sequence(Arrays.asList(a, b, c, d, c)));
-        sequenceList.add(new Sequence(Arrays.asList(f, f, f, f, f, f)));        
+        sequenceList.add(new Sequence(Arrays.asList(f, f, f, f, f, f)));  
+    }      
+    
+    
+    @Test
+    public void regressionTest() {
+        NaturalnessModel model = new NaturalnessModel(3,0);
+        Event a = new Event("a");
+        Event b = new Event("b");
+        Event c = new Event("c");
+        Event d = new Event("d");
+        model.learn(new Sequence(Arrays.asList(a, b, c)));
+        model.learn(new Sequence(Arrays.asList(a, b, d)));
+        double ce = model.crossEntropy(new Sequence(Arrays.asList(a, b, d)));
+        assertTrue(ce == 0);
     }
 
     @Test
